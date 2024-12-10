@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.jsx';
+
+const projects = [
+  {
+    id: 'chatbot-assistant',
+    title: 'AI Chatbot Assistant',
+    description: 'An intelligent conversational AI with advanced natural language processing capabilities.',
+    image: '/images/chatbot.jpg',
+    tags: ['AI', 'NLP', 'Conversational AI']
+  },
+  {
+    id: 'image-generator',
+    title: 'AI Image Generation',
+    description: 'A generative AI tool that creates unique images based on text prompts.',
+    image: '/images/image-gen.jpg',
+    tags: ['AI', 'Machine Learning', 'Image Generation']
+  }
+];
+---
+
+<Layout title="Ced's AI Sandbox">
+  <main class="bg-brand-black text-brand-white min-h-screen p-8">
+    <section class="max-w-6xl mx-auto">
+      <h1 class="text-5xl font-bold text-brand-gold mb-8">Ced's AI Sandbox</h1>
+      
+      <div class="mb-12">
+        <p class="text-xl mb-4">
+          Welcome to my experimental playground of artificial intelligence projects. 
+          Here, I explore the cutting edge of AI technologies, pushing boundaries 
+          and creating innovative solutions.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {projects.map(project => (
+          <ProjectCard 
+            client:load 
+            title={project.title} 
+            description={project.description}
+            image={project.image}
+            tags={project.tags}
+            id={project.id}
+          />
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,26 @@
+
+{
+  "name": "cedai-sandbox",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "netlify": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "astro": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/react": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@netlify/plugin-astro": "^2.1.0",
+    "netlify-cli": "^16.1.0"
+  }
+  }
+  

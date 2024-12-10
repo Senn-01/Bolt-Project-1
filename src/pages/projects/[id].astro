@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = [
+    {
+      id: 'chatbot-assistant',
+      title: 'AI Chatbot Assistant',
+      description: 'An intelligent conversational AI with advanced natural language processing capabilities.',
+      fullDescription: `
+        This AI Chatbot Assistant leverages cutting-edge natural language processing 
+        to provide intelligent, context-aware conversations. Built using advanced 
+        machine learning models, it can understand complex queries and provide 
+        nuanced, helpful responses across various domains.
+      `,
+      image: '/images/chatbot.jpg',
+      technologies: ['Python', 'TensorFlow', 'NLP', 'Machine Learning'],
+      githubLink: '#'
+    },
+    {
+      id: 'image-generator',
+      title: 'AI Image Generation',
+      description: 'A generative AI tool that creates unique images based on text prompts.',
+      fullDescription: `
+        This Image Generation project uses state-of-the-art generative adversarial 
+        networks (GANs) to create unique, high-quality images from textual descriptions. 
+        Users can input creative prompts and watch as the AI transforms words into 
+        stunning visual representations.
+      `,
+      image: '/images/image-gen.jpg',
+      technologies: ['Python', 'PyTorch', 'GAN', 'Computer Vision'],
+      githubLink: '#'
+    }
+  ];
+
+  return projects.map(project => ({
+    params: { id: project.id },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} | Ced's AI Sandbox`}>
+  <main class="bg-brand-black text-brand-white min-h-screen p-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl text-brand-gold font-bold mb-6">{project.title}</h1>
+      
+      <img 
+        src={project.image} 
+        alt={project.title} 
+        class="w-full h-96 object-cover rounded-lg mb-8"
+      />
+
+      <div class="mb-8">
+        <h2 class="text-2xl text-brand-gold mb-4">Project Overview</h2>
+        <p class="text-lg">{project.fullDescription}</p>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-2xl text-brand-gold mb-4">Technologies Used</h2>
+        <div class="flex flex-wrap gap-2">
+          {project.technologies.map(tech => (
+            <span class="bg-brand-gold/20 text-brand-gold px-3 py-1 rounded-full">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <a 
+        href={project.githubLink} 
+        target="_blank" 
+        class="bg-brand-gold text-brand-black px-6 py-3 rounded hover:opacity-90 transition-all"
+      >
+        View on GitHub
+      </a>
+    </div>
+  </main>
+</Layout>
